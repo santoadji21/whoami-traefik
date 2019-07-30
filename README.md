@@ -1,37 +1,38 @@
-## Welcome to GitHub Pages
+# Traefik 101
 
-You can use the [editor on GitHub](https://github.com/azemoning/klim-traefik101/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+## Overview
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Traefik adalah Edge Router open-source yang memberikan pengalaman atau experience dalam publishing service-service milik kita menjadi mudah dan menyenangkan!
 
-### Markdown
+Traefik menerima requests atas nama sistem milik kita dan mencari tahu komponen mana yang bertanggung jawab untuk menanganinya.\
+Apa yang membedakan Traefik adalah, selain memiliki banyak fitur, Traefik dapat secara otomatis menemukan konfigurasi yang tepat untuk service kita (Auto Service Discovery).
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Traefik secara native sesuai dengan mayoritas teknologi cluster yang ada saat ini, seperti Kubernetes, Docker, Docker Swarm, AWS, Mesos, Marathon, dan banyak lagi; dan dapat menangani semua dalam waktu yang bersamaan.
 
-```markdown
-Syntax highlighted code block
+## Concepts
 
-# Header 1
-## Header 2
-### Header 3
+(Replace this text with Concepts intro)
 
-- Bulleted
-- List
+### Entrypoints
 
-1. Numbered
-2. List
+(Replace this text with Entrypoints concept text)
 
-**Bold** and _Italic_ and `Code` text
+### Frontends
 
-[Link](url) and ![Image](src)
-```
+(Replace this text with Frontends concept text)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Backends
 
-### Jekyll Themes
+(Replace this text with Backends concept text)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/azemoning/klim-traefik101/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## Configuration
 
-### Support or Contact
+(Replace this text with Configuration intro)
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Static Configuration
+
+(Replace this text with Static Configuration text)
+
+### Dynamic Configuration
+
+(Replace this text with Dynamic Configuration text)
