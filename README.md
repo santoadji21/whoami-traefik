@@ -16,8 +16,10 @@ Traefik secara native sesuai dengan mayoritas teknologi cluster yang ada saat in
 
 ### Entrypoints
 
-(Replace this text with Entrypoints concept text)\
+(Replace this text with Entrypoints concept text)
+
 **Example**
+
 ```toml
 [entryPoints]
   [entryPoints.https]
@@ -33,8 +35,10 @@ Traefik secara native sesuai dengan mayoritas teknologi cluster yang ada saat in
 
 ### Frontends
 
-(Replace this text with Frontends concept text)\
+(Replace this text with Frontends concept text)
+
 **Example**
+
 ```dockerfile
 labels:
       - "traefik.frontend.rule=PathPrefixStrip:/"
@@ -45,8 +49,10 @@ labels:
 
 ### Backends
 
-(Replace this text with Backends concept text)\
+(Replace this text with Backends concept text)
+
 **Example**
+
 ```toml
 [backends]
   [backends.backend1]
