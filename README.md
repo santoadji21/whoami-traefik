@@ -16,15 +16,61 @@ Traefik secara native sesuai dengan mayoritas teknologi cluster yang ada saat in
 
 ### Entrypoints
 
-(Replace this text with Entrypoints concept text)
+(Replace this text with Entrypoints concept text)\
+**Example**
+```toml
+[entryPoints]
+  [entryPoints.https]
+  address = ":443"
+  [entryPoints.https.tls]
+    [entryPoints.https.tls.ClientCA]
+    files = ["tests/clientca1.crt", "tests/clientca2.crt"]
+    optional = false
+    [[entryPoints.https.tls.certificates]]
+    certFile = "tests/traefik.crt"
+    keyFile = "tests/traefik.key"
+```
 
 ### Frontends
 
-(Replace this text with Frontends concept text)
+(Replace this text with Frontends concept text)\
+**Example**
+```dockerfile
+labels:
+      - "traefik.frontend.rule=PathPrefixStrip:/"
+      - "traefik.frontend.rule=Host:www.example.com"
+      - "traefik.enable=true"
+      - "traefik.frontend.entryPoints=http"
+```
 
 ### Backends
 
-(Replace this text with Backends concept text)
+(Replace this text with Backends concept text)\
+**Example**
+```toml
+[backends]
+  [backends.backend1]
+    # ...
+    [backends.backend1.servers.server1]
+    url = "http://172.17.0.2:80"
+    weight = 10
+    [backends.backend1.servers.server2]
+    url = "http://172.17.0.3:80"
+    weight = 1
+  [backends.backend2]
+    # ...
+    [backends.backend2.servers.server1]
+    url = "https://172.17.0.4:443"
+    weight = 1
+    [backends.backend2.servers.server2]
+    url = "https://172.17.0.5:443"
+    weight = 2
+  [backends.backend3]
+    # ...
+    [backends.backend3.servers.server1]
+    url = "h2c://172.17.0.6:80"
+    weight = 1
+```
 
 ## Configuration
 
