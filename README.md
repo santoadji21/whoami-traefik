@@ -1,5 +1,18 @@
 # Traefik 101
 
+## Prerequisites
+
+Silahkan clone repository materi terlebih dahulu.
+
+```bash
+$ git clone https://github.com/azemoning/klim-traefik101.git
+```
+
+dan pastikan Docker dan Docker Compose sudah terinstall pada sistem masing-masing.
+```bash
+$ docker version && docker-compose version
+```
+
 ## Overview
 
 Traefik adalah Edge Router open-source yang memberikan pengalaman atau experience dalam publishing service-service milik kita menjadi mudah dan menyenangkan!
@@ -12,13 +25,11 @@ Traefik secara native sesuai dengan mayoritas teknologi cluster yang ada saat in
 
 ## Concepts
 
-(Replace this text with Concepts intro)
-
 ### Entrypoints
 
-(Replace this text with Entrypoints concept text)
+Entrypoint adalah titik masuk (literally entrypoint) network ke Traefik, yang dimana request dari client akan masuk melalui titik ini.
 
-**Example**
+**Contoh konfigurasi dari entrypoint Traefik**
 
 ```toml
 [entryPoints]
@@ -35,9 +46,9 @@ Traefik secara native sesuai dengan mayoritas teknologi cluster yang ada saat in
 
 ### Frontends
 
-(Replace this text with Frontends concept text)
+Frontend terdiri dari satu set aturan yang menentukan bagaimana request yang masuk dan diteruskan dari entrypoint ke backend.
 
-**Example**
+**Contoh konfigurasi dari frontend pada docker-compose menggunakan labels**
 
 ```dockerfile
 labels:
@@ -49,9 +60,9 @@ labels:
 
 ### Backends
 
-(Replace this text with Backends concept text)
+Backend bertanggung jawab untuk menyeimbangkan lalu lintas yang datang dari satu atau lebih frontend ke satu set server http.
 
-**Example**
+**Contoh konfigurasi dari backend Traefik**
 
 ```toml
 [backends]
@@ -80,11 +91,16 @@ labels:
 
 ## Configuration
 
-(Replace this text with Configuration intro)
+Konfigurasi pada Traefik memiliki dua bagian, yaitu:
+
+- Static Configuration, yang hanya akan dibaca pada saat pertama kali service Traefik berjalan. 
+- Dynamic Configuration, yang bisa melakukan *hot-reload* (tidak perlu melakukan restart service Traefik)
 
 ### Static Configuration
 
-(Replace this text with Static Configuration text)
+Static configuration adalah konfigurasi global yang mengatur koneksi ke konfigurasi backend dan entrypoint.
+
+Contoh static configuration dari file traefik.toml
 
 ```toml
 ################################################################
@@ -245,7 +261,9 @@ labels:
 
 ### Dynamic Configuration
 
-(Replace this text with Dynamic Configuration text)
+Traefik dapat melakukan *hot-reload* pada rule-rule disediakan oleh berbagai macam konfigurasi backend, contoh: Docker.
+
+Kita hanya perlu meng-enable option ***watch*** untuk membuat Traefik mengawasi perubahan konfigurasi backend dan men-generate ulang konfigurasi tersebut secara otomatis. Route ke service akan dibuat dan di-update secara langsung pada setiap perubahan.
 
 ## Presentation Files
 
