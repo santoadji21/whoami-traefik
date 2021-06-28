@@ -1,0 +1,51 @@
+version: "3.3"
+
+services:
+  traefik:
+    image: "traefik:v2.4"
+    container_name: "traefik"
+    networks:
+      - proxy
+    command:
+      - --log.level=DEBUG
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --api.dashboard=true 
+      - --api.debug=true
+      - --providers.docker=true
+      - --providers.docker.swarmMode=true
+      - --providers.docker.exposedbydefault=false
+      - --providers.docker.network=proxy
+    ports:
+      - "80:80"
+      - "8080:8080"
+    deploy:
+      placement: 
+        constraints:
+          - node.role == manager
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  whoami:
+    image: "traefik/whoami"
+    networks:
+      - proxy
+    deploy:
+      mode: replicated
+      replicas:  4
+      placement: 
+        constraints:
+          - node.role == worker
+      labels:
+        # traefik.enable=true and constraint label are needed because
+        # of the restrictions we enforced in our traefik configuration
+        - traefik.enable=true
+        - traefik.http.services.whoami.loadbalancer.server.port=80
+        - "traefik.http.routers.whoami.rule=Host(`192.168.56.10`)"
+        - "traefik.http.routers.whoami.entrypoints=web"
+
+networks:
+  proxy:
+    external: true
